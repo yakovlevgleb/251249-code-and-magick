@@ -25,7 +25,7 @@ window.renderStatistics = function(ctx, names, times) {
 
   var histogramWidth = 150;
   var step = histogramWidth / (max - 0);
-
+  var opac;
   var barHeigth = 40; // px;
   var indent = 90; // px;
   var initialX = 250; // px;
@@ -33,8 +33,15 @@ window.renderStatistics = function(ctx, names, times) {
 
   ctx.textBaseline = 'top'; // Рисуем надпись от левого верхнего угла
   for (var i = 0; i < times.length; i++) {
-    ctx.fillText(times[i], initialY + indent * i, initialX - barHeigth);
-    ctx.fillRect(initialY + indent * i, initialX, barHeigth, -(times[i] * step));
+    ctx.fillStyle = '#000';
+    ctx.fillText(Math.floor(times[i]), initialY + indent * i, -(times[i] * step) + initialX - 20);
     ctx.fillText(names[i], initialY + indent * i, initialX);
+    if (names[i] === 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1.0)';
+    } else {
+      opac = Math.floor(Math.random() * 100)/100;
+      ctx.fillStyle = 'rgba(0, 0, 255,'+ opac +')';
+    }
+    ctx.fillRect(initialY + indent * i, initialX, barHeigth, -(times[i] * step));
   }
 }
