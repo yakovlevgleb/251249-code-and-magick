@@ -73,8 +73,7 @@ var renderWizard = function (wizard) {
   wizardElement.querySelector(selectors.coat).style.fill = wizard.coatColor;
   wizardElement.querySelector(selectors.eyes).style.fill = wizard.eyesColor;
   return wizardElement;
-
-}
+};
 
 var fragment = document.createDocumentFragment();
 for (i = 0; i < wizards.length; i++) {
