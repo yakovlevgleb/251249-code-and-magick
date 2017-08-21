@@ -25,7 +25,7 @@ var wizardsSecondName = [
   'Ирвинг'
 ];
 
-var jaket = [
+var jacket = [
   'rgb(101, 137, 164)',
   'rgb(241, 43, 107)',
   'rgb(146, 100, 161)',
@@ -58,7 +58,7 @@ var wizards = [];
 for (var i = 0; i < wizardsCount; i++) {
   wizards[i] = {
     name: getRandom(wizardFirstName) + ' ' + getRandom(wizardsSecondName),
-    coatColor: getRandom(jaket),
+    coatColor: getRandom(jacket),
     eyesColor: getRandom(eyesColor)
   };
 }
