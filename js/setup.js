@@ -3,7 +3,7 @@
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 
-var wizadName = [
+var wizard = [
   'Иван',
   'Хуан Себастьян',
   'Мария',
@@ -14,7 +14,7 @@ var wizadName = [
   'Вашингтон'
 ];
 
-var wizardSname = [
+var wizardsName = [
   'да Марья',
   'Верон',
   'Мирабелла',
@@ -25,7 +25,7 @@ var wizardSname = [
   'Ирвинг'
 ];
 
-var jaketColor = [
+var jaket = [
   'rgb(101, 137, 164)',
   'rgb(241, 43, 107)',
   'rgb(146, 100, 161)',
@@ -42,27 +42,24 @@ var eyesColor = [
   'green'
 ];
 
+var selectors = {
+  label: '.setup-similar-label',
+  coat: '.wizard-coat',
+  eyes: '.wizard-eyes'
+};
 
 
-function getWizardName(wizadName, wizardSname) {
-  return wizadName[Math.floor(Math.random() * wizadName.length)] + ' ' + wizardSname[Math.floor(Math.random() * wizardSname.length)];
+function getRandom(data) {
+  return data[Math.floor(Math.random() * data.length)];
 }
 
-function getColorJaket(jaketColor) {
-  return jaketColor[Math.floor(Math.random() * jaketColor.length)];
-}
-
-function getEyesColor(eyesColor) {
-  return eyesColor[Math.floor(Math.random() * eyesColor.length)];
-}
-
-var howManyWizards = 4;
+var wizardsCount = 4;
 var wizards = [];
-for (var i = 0; i < howManyWizards; i++) {
+for (var i = 0; i < wizardsCount; i++) {
   wizards[i] = {
-    name: getWizardName(wizadName, wizardSname),
-    coatColor: getColorJaket(jaketColor),
-    eyesColor: getEyesColor(eyesColor)
+    name: getRandom(wizard) + ' ' + getRandom(wizardsName),
+    coatColor: getRandom(jaket),
+    eyesColor: getRandom(eyesColor)
   };
 }
 
@@ -72,9 +69,9 @@ for (var i = 0; i < howManyWizards; i++) {
   var renderWizard = function(wizard) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
 
-    wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
-    wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
-    wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
+    wizardElement.querySelector(selectors.label).textContent = wizard.name;
+    wizardElement.querySelector(selectors.coat).style.fill = wizard.coatColor;
+    wizardElement.querySelector(selectors.eyes).style.fill = wizard.eyesColor;
     return wizardElement;
   }
 
