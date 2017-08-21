@@ -11,9 +11,9 @@ var CANVAS_DATA = {
   you: 'Вы',
   win: 'Ура вы победили!',
   resultList: 'Список результатов:'
-}
+};
 
-window.renderStatistics = function(ctx, names, times) {
+window.renderStatistics = function (ctx, names, times) {
   ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
   ctx.fillRect(CANVAS_DATA.left, CANVAS_DATA.top, CANVAS_DATA.width, CANVAS_DATA.height);
   ctx.fillStyle = 'rgba(256, 256, 256, 1.0)';
@@ -45,11 +45,11 @@ window.renderStatistics = function(ctx, names, times) {
   var initialY = 120;
 
   ctx.textBaseline = 'top';
-  for (var i = 0; i < times.length; i++) {
+  for (i = 0; i < times.length; i++) {
     opac = Math.floor(Math.random() * 100) / 100;
     drawBar(ctx, step, names, times, initialY, initialX, indent, i, opac, barHeigth);
   }
-}
+};
 
 function drawBar(ctx, step, names, times, initialY, initialX, indent, i, opac, barHeigth) {
   ctx.fillStyle = '#000';

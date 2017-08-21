@@ -3,7 +3,7 @@
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 
-var wizard = [
+var wizardFirstName = [
   'Иван',
   'Хуан Себастьян',
   'Мария',
@@ -14,7 +14,7 @@ var wizard = [
   'Вашингтон'
 ];
 
-var wizardsName = [
+var wizardsSecondName = [
   'да Марья',
   'Верон',
   'Мирабелла',
@@ -57,28 +57,29 @@ var wizardsCount = 4;
 var wizards = [];
 for (var i = 0; i < wizardsCount; i++) {
   wizards[i] = {
-    name: getRandom(wizard) + ' ' + getRandom(wizardsName),
+    name: getRandom(wizardFirstName) + ' ' + getRandom(wizardsSecondName),
     coatColor: getRandom(jaket),
     eyesColor: getRandom(eyesColor)
   };
 }
 
-  var similarListElement = userDialog.querySelector('.setup-similar-list');
-  var similarWizardTemplate = document.querySelector('#similar-wizard-template').content;
+var similarListElement = userDialog.querySelector('.setup-similar-list');
+var similarWizardTemplate = document.querySelector('#similar-wizard-template').content;
 
-  var renderWizard = function(wizard) {
-    var wizardElement = similarWizardTemplate.cloneNode(true);
+var renderWizard = function (wizard) {
+  var wizardElement = similarWizardTemplate.cloneNode(true);
 
-    wizardElement.querySelector(selectors.label).textContent = wizard.name;
-    wizardElement.querySelector(selectors.coat).style.fill = wizard.coatColor;
-    wizardElement.querySelector(selectors.eyes).style.fill = wizard.eyesColor;
-    return wizardElement;
-  }
+  wizardElement.querySelector(selectors.label).textContent = wizard.name;
+  wizardElement.querySelector(selectors.coat).style.fill = wizard.coatColor;
+  wizardElement.querySelector(selectors.eyes).style.fill = wizard.eyesColor;
+  return wizardElement;
 
-  var fragment = document.createDocumentFragment();
-  for (var i = 0; i < wizards.length; i++) {
-    fragment.appendChild(renderWizard(wizards[i]));
-  }
-  similarListElement.appendChild(fragment);
+}
 
-  userDialog.querySelector('.setup-similar').classList.remove('hidden');
+var fragment = document.createDocumentFragment();
+for (i = 0; i < wizards.length; i++) {
+  fragment.appendChild(renderWizard(wizards[i]));
+}
+similarListElement.appendChild(fragment);
+
+userDialog.querySelector('.setup-similar').classList.remove('hidden');
